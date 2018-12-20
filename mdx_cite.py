@@ -28,12 +28,13 @@ Copyright
 2011, 2012 [The active archives contributors](http://activearchives.org/)
 All rights reserved.
 
-This software is released under the modified BSD License. 
+This software is released under the modified BSD License.
 See LICENSE.md for details.
 '''
 
 
 import markdown
+
 from markdown.inlinepatterns import SimpleTagPattern
 
 
@@ -45,11 +46,13 @@ class CiteExtension(markdown.extensions.Extension):
 
     def extendMarkdown(self, md, md_globals):
         """Modifies inline patterns"""
-        md.inlinePatterns.add('cite', SimpleTagPattern(CITE_RE, 'cite'), '<not_strong')
+        md.inlinePatterns.add(
+            'cite', SimpleTagPattern(
+                CITE_RE, 'cite'), '<not_strong')
 
 
-def makeExtension(configs={}):
-    return CiteExtension(configs=dict(configs))
+def makeExtension():
+    return CiteExtension()
 
 
 if __name__ == "__main__":
